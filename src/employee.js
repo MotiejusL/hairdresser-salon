@@ -229,10 +229,15 @@ function loadList (element, funkc) {
       const timeSelectDiv = document.createElement('div')
       timeSelectDiv.appendChild(timeSelect)
       timeSelectDiv.className = 'col-1-5 reg-div block'
-      element.getDates()[dateSelect.options[dateSelect.selectedIndex].value].getFreeTimes().forEach(function (element, index) {
-        const option = document.createElement('option')
-        option.innerHTML = element
-        timeSelect.appendChild(option)
+      dateSelect.addEventListener('click', function () {
+        while (timeSelect.firstChild) {
+          timeSelect.removeChild(timeSelect.firstChild)
+        }
+        element.getDates()[dateSelect.options[dateSelect.selectedIndex].value].getFreeTimes().forEach(function (element, index) {
+          const option = document.createElement('option')
+          option.innerHTML = element
+          timeSelect.appendChild(option)
+        })
       })
       const confirmDiv = document.createElement('div')
       confirmDiv.className = 'cold-1-5 reg-div flex-center-center'
