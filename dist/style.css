@@ -80,7 +80,8 @@ body {
 
 .header {
   height: 145px;
-  background-color: rgba(0, 0, 0, 0.85); }
+  background-color: rgba(0, 0, 0, 0.85);
+  font-family: 'Arial', cursive; }
 
 .text-center {
   text-align: center; }

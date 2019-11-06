@@ -16,12 +16,14 @@ const dateDay = (day) => {
     })
   }
   const toString = () => {
-    if (day.getMonth() < 10 && day.getDate() < 10) {
+    if (day.getMonth() < 9 && day.getDate() < 10) {
       return '0' + (day.getMonth() + 1) + '-0' + day.getDate()
-    } else if (day.getMonth() < 10) {
+    } else if (day.getMonth() < 9 && day.getDate() >= 10) {
       return '0' + (day.getMonth() + 1) + '-' + day.getDate()
+    } else if (day.getMonth() >= 9 && day.getDate() >= 10) {
+      return '' + (day.getMonth() + 1) + '-' + day.getDate()
     } else {
-      return day.getMonth() + '-' + day.getDate()
+      return '' + (day.getMonth() + 1) + '-0' + day.getDate()
     }
   }
 

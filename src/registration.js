@@ -95,7 +95,7 @@ function register () {
       }
     })
   })
-
+  let clicked = false
   submitButton.addEventListener('click', function () {
     let validated = true
     if (inputFirstName.value === '') {
@@ -116,7 +116,8 @@ function register () {
     } else {
       inputPhone.className = ''
     }
-    if (validated === true) {
+
+    if (validated === true && clicked === false) {
       const registrationForm = RegistrationForm(inputFirstName.value, inputPhone.value, selectHairdresser.options[selectHairdresser.selectedIndex].value, selectDate.options[selectDate.selectedIndex].text, selectTime.options[selectTime.selectedIndex].value)
       employeeArray.forEach(function (element) {
         if (element.getCategory() === selectHairdresser.options[selectHairdresser.selectedIndex].value) {
@@ -136,7 +137,13 @@ function register () {
       let success = document.createElement('h2')
       success.innerHTML = 'Jusu registracija sekminga'
       success.className = 'success'
+      inputFirstName.value = ''
+      inputPhone.value = ''
       formContainer.insertBefore(success, formContainer.firstChild)
+      clicked = true
+      setTimeout(function () {
+        window.location.reload(1)
+      }, 2000)
     }
   })
 
